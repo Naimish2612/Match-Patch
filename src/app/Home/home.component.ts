@@ -10,10 +10,13 @@ import { error } from 'util';
 export class HomeComponent implements OnInit {
 
   home_data:any;
+  
+  signUpMode=false;
+
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-    this.getValues();
+    //this.getValues();
   }
 
   getValues(){
@@ -23,6 +26,14 @@ export class HomeComponent implements OnInit {
     },error=>{
       console.log(error);
     });
+  }
+
+  signUpToggel(){
+    this.signUpMode=true;
+  }
+
+  resetSignUpModeValue(signUpMode:boolean){
+    this.signUpMode=signUpMode;
   }
 
 }

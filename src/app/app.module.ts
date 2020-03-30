@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './Dashboard/nav-bar/nav-bar.component';
 import { AuthService } from './_services/auth.service';
 import { SignupComponent } from './Auth/signup/signup.component';
+import { ErrorInterceptorProvider } from './_services/ErrorHendling/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SignupComponent } from './Auth/signup/signup.component';
     FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    ErrorInterceptorProvider
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

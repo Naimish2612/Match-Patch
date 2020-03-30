@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     this.authService.SignUp(this.signUpModel).subscribe(()=>{
       console.log("SignUp Done.");
     },error=>{
-      console.log("SignUp Error.");
+      console.log(error);
     });
   }
 

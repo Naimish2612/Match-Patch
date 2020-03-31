@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,26 +13,25 @@ export class NavBarComponent implements OnInit {
     
   }
 
-  constructor(private authService:AuthService) { }
+  constructor(public authService:AuthService,private alertService:AlertService) { }
 
   ngOnInit() {
   }
 
   Login(){
     this.authService.Login(this.loginModel).subscribe(next=>{
-      console.log("login successfully.");
+      this.alertService.Success("login successfully.");
     },error=>{
-      console.log(error);
+      this.alertService.Error(error);
     })
   }
 
   LoggedIn(){
-    const token=localStorage.getItem("token");
-    return !!token;
+    return this.authService.LoggedIn();
   }
 
   Logout(){
     localStorage.removeItem("token");
-    console.log("logout");
+    this.alertService.Message("logout");
   }
 }

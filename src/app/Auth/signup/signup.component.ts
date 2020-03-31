@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,16 +14,16 @@ export class SignupComponent implements OnInit {
   @Input() signUpValue: any;
   @Output() resetSignUpMode = new EventEmitter();
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private alertService:AlertService) { }
 
   ngOnInit() {
   }
 
   SignUp() {
     this.authService.SignUp(this.signUpModel).subscribe(()=>{
-      console.log("SignUp Done.");
+      this.alertService.Message("SignUp Done.");
     },error=>{
-      console.log(error);
+      this.alertService.Error(error);
     });
   }
 

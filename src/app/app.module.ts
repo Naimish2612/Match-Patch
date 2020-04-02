@@ -11,6 +11,9 @@ import { NavBarComponent } from './Dashboard/nav-bar/nav-bar.component';
 import { AuthService } from './_services/auth.service';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { ErrorInterceptorProvider } from './_services/ErrorHendling/error.interceptor';
+import { MemberListComponent } from './Member/member-list/member-list.component';
+import { MemberComponent } from './Member/member/member.component';
+import { MessageListComponent } from './Message/message-list/message-list.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { ErrorInterceptorProvider } from './_services/ErrorHendling/error.interc
     HomeComponent,
     NavBarComponent,
     SignupComponent,
+    MemberListComponent,
+    MemberComponent,
+    MessageListComponent,
   ],
   imports: [
     BrowserModule,

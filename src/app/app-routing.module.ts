@@ -13,8 +13,9 @@ const routes: Routes = [
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
-    children: [{ path: "member", component: MemberComponent },
+    children: [
     { path: "member/list", component: MemberListComponent },
+    { path: "member/:id", component: MemberComponent },
     { path: "message", component: MessageListComponent }]
   },
   { path: "**", redirectTo: '', pathMatch: "full" }

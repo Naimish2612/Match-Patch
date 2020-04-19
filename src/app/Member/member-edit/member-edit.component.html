@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user?.photo_url}}" alt="{{user?.known_as}}">
+        <img class="card-img-top img-thumbnail" src="{{photo_url}}" alt="{{user?.known_as}}">
         <div class="card-body">
           <div>
             <strong>Location:</strong>
@@ -58,7 +58,7 @@
 
           </tab>
           <tab heading="Edit Photos">
-            <h4>Edit Photo Soon..!</h4>
+            <app-photo-editor [photos]="user.photos" (getUserPhotoChange)="updateMainPhoto($event)"></app-photo-editor>
           </tab>
 
         </tabset>

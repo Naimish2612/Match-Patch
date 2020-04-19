@@ -14,7 +14,7 @@ export class AlertService {
         okCallback();
       }
       else { }
-    });
+    }).setHeader('Match-Patch');
   }
 
   Success(message: string) {

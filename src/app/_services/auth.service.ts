@@ -37,8 +37,8 @@ export class AuthService {
     );
   }
 
-  SignUp(model: any) {
-    return this.http.post(this.authBaseUrl + 'SignUp', model);
+  SignUp(user: User) {
+    return this.http.post(this.authBaseUrl + 'SignUp', user);
   }
 
   LoggedIn() {

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { BsDropdownModule,TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDropdownModule,TabsModule, BsDatepickerModule, PaginationModule } from 'ngx-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -64,6 +64,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     TabsModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,

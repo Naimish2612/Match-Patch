@@ -14,6 +14,9 @@ export class MemberListComponent implements OnInit {
 
   users: User[];
   pagination: Pageination;
+  user: User = JSON.parse(localStorage.getItem('user'));
+  genderDropdown = [{ value: "male", dispaly: "Male" }, { value: "female", dispaly: "Female" }];
+  userParams: any = {};
 
   pageIndex: Number = 1;
   pageSize: Number = 5;
@@ -28,11 +31,14 @@ export class MemberListComponent implements OnInit {
       hasPreviousPage: false,
       hasNextPage: false
     }
+    this.userParams.gender = this.user.gender === 'male' ? 'female' : 'male';
+    this.userParams.min_age = 18;
+    this.userParams.max_age = 99;
     this.loadUsers();
   }
 
   loadUsers() {
-    this.userService.getUsers(this.pagination.currentPage, this.pagination.pageSize).subscribe((users: PageResult<User[]>) => {
+    this.userService.getUsers(this.pagination.currentPage, this.pagination.pageSize,this.userParams).subscribe((users: PageResult<User[]>) => {
       this.users = users.result;
       this.pagination = users.pagination;
     }, error => {
@@ -44,6 +50,13 @@ export class MemberListComponent implements OnInit {
     this.pagination.currentPage = event.page;
     this.loadUsers();
     //console.log(this.pagination.currentPage);
+  }
+
+  resetFilter(){
+    this.userParams.gender = this.user.gender === 'male' ? 'female' : 'male';
+    this.userParams.min_age = 18;
+    this.userParams.max_age = 99;
+    this.loadUsers();
   }
 
 

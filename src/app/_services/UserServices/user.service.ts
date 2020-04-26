@@ -17,7 +17,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(pageIndex?, pageSize?): Observable<PageResult<User[]>> {
+  getUsers(pageIndex?, pageSize?,userParams?): Observable<PageResult<User[]>> {
 
     const pageResult: PageResult<User[]> = new PageResult<User[]>();
 
@@ -27,6 +27,12 @@ export class UserService {
     if (pageIndex != null && pageSize != null) {
       params = params.append('pageIndex', pageIndex);
       params = params.append('pageSize', pageSize);
+    }
+
+    if(userParams!=null){
+      params = params.append('min_age', userParams.min_age);
+      params = params.append('max_age', userParams.max_age);
+      params = params.append('gender', userParams.gender);
     }
 
     return this.http.get<User[]>(this.baseUrl + 'user',{observe:'response',params})

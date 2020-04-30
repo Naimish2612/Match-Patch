@@ -17,7 +17,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(pageIndex?, pageSize?,userParams?): Observable<PageResult<User[]>> {
+  getUsers(pageIndex?, pageSize?, userParams?,likeParams?): Observable<PageResult<User[]>> {
 
     const pageResult: PageResult<User[]> = new PageResult<User[]>();
 
@@ -29,13 +29,18 @@ export class UserService {
       params = params.append('pageSize', pageSize);
     }
 
-    if(userParams!=null){
+    if (userParams != null) {
       params = params.append('min_age', userParams.min_age);
       params = params.append('max_age', userParams.max_age);
       params = params.append('gender', userParams.gender);
     }
 
-    return this.http.get<User[]>(this.baseUrl + 'user',{observe:'response',params})
+    if(likeParams === "Likers")
+      params=params.append("likers","true");
+    if(likeParams === "Likees")
+      params=params.append("likees","true");
+
+    return this.http.get<User[]>(this.baseUrl + 'user', { observe: 'response', params })
       .pipe(
         map(response => {
           pageResult.result = response.body;
@@ -61,5 +66,9 @@ export class UserService {
 
   deleteUserPhoto(user_id: number, photo_id: number) {
     return this.http.delete(this.baseUrl + "user/" + user_id + "/photos/" + photo_id);
+  }
+
+  sendLike(user_id: number, recipient_id: number) {
+    return this.http.post(this.baseUrl + "user/" + user_id + "/like/" + recipient_id, {});
   }
 }

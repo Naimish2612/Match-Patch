@@ -7,6 +7,7 @@ import { MessageListComponent } from './Message/message-list/message-list.compon
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberEditComponent } from './Member/member-edit/member-edit.component';
 import { PreventUnsaveChanges } from './_guards/prevent-unsave-changes.guards';
+import { MemberLikeListComponent } from './Member/member-like-list/member-like-list.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: "member/edit", component: MemberEditComponent,canDeactivate:[PreventUnsaveChanges] },
       { path: "member/list", component: MemberListComponent },
+      { path: "member/like/list", component: MemberLikeListComponent },
       { path: "member/:id", component: MemberComponent },
       { path: "message", component: MessageListComponent }]
   },

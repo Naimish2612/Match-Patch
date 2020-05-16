@@ -3,7 +3,6 @@ import { User } from 'src/app/_model/User/user';
 import { AlertService } from 'src/app/_services/alert.service';
 import { UserService } from 'src/app/_services/UserServices/user.service';
 import { PageResult, Pageination } from 'src/app/_model/User/Pageing/Pagination';
-import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-member-list',
@@ -38,7 +37,8 @@ export class MemberListComponent implements OnInit {
   }
 
   loadUsers() {
-    this.userService.getUsers(this.pagination.currentPage, this.pagination.pageSize,this.userParams).subscribe((users: PageResult<User[]>) => {
+    this.userService.getUsers(this.pagination.currentPage, this.pagination.pageSize,this.userParams)
+    .subscribe((users: PageResult<User[]>) => {
       this.users = users.result;
       this.pagination = users.pagination;
     }, error => {

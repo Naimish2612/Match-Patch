@@ -29,6 +29,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsaveChanges } from './_guards/prevent-unsave-changes.guards';
 import { PhotoEditorComponent } from './Member/photo-editor/photo-editor.component';
 import { MemberLikeListComponent } from './Member/member-like-list/member-like-list.component';
+import { MemberMessagesComponent } from './Member/member-messages/member-messages.component';
 
 
 export function tokenGetter(){
@@ -55,7 +56,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberEditComponent,
     PhotoEditorComponent,
     TimeAgoPipe,
-    MemberLikeListComponent
+    MemberLikeListComponent,
+    MemberMessagesComponent
   ],
   imports: [
     BrowserModule,

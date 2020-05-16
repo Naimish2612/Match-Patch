@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: "member/list", component: MemberListComponent },
       { path: "member/like/list", component: MemberLikeListComponent },
       { path: "member/:id", component: MemberComponent },
-      { path: "message", component: MessageListComponent }]
+      { path: "messages", component: MessageListComponent }]
   },
   { path: "**", redirectTo: '', pathMatch: "full" }
 ];
